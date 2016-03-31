@@ -87,8 +87,8 @@
 		
 		<!-- 后台账号登陆action -->
 		<action name="login" class="login">
-			<result name="success">/main.jsp</result>
-			<result name="error">/error.jsp</result>
+			<result name="success" type="redirect">jsp/main.jsp</result>
+			<result name="error">/index.html</result>
 		</action>
 	</package>
 </struts>    
