@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+
+	<!-- android端接收的信息 -->
+	<package name="android" extends="json-default" >
+		<!-- 签到action -->
+		<action name="sign" class="sign">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+	
+		<!-- 获取新闻action -->
+		<action name="news" class="getNews" >
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- 查找学生action -->
+		<action name="findStudentInA" class="findStudent" method="getStudent">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- 查找学生action -->
+		<action name="findManyStudentInA" class="findStudent">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- 老师登陆action -->
+		<action name="teacherlogin" class="teacherLogin">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 网页接受的信息 -->
+	<package name="web" extends="struts-default" namespace="/">
+		<!-- 保存学生信息action -->
+		<action name="saveStudent" class="student" method="saveStudent">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- 更新学生信息action -->
+		<action name="updateStudent" class="student" method="updateStudent">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<!-- 保存多条学生信息action -->
+		<action name="saveManyStudents" class="student" method="saveManyStudents">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- 查找学生信息action -->
+		<action name="findStudent" class="student" method="searchStudent">
+			<result name="success">/findresult.jsp</result>
+			<result name="error">/none.jsp</result>
+		</action>
+		
+		<!-- 保存新闻action -->
+		<action name="saveNews" class="saveNews">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- 查看签到情况action -->
+		<action name="signed" class="signed">
+			<result name="success">/signdetailedresult.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- 保存老师账号action -->
+		<action name="saveTeacher" class="teacher">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- 后台账号登陆action -->
+		<action name="login" class="login">
+			<result name="success">/main.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+</struts>    
